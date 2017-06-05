@@ -44,7 +44,7 @@ public class Tour {
 
     public double getFitness() {
         if (fitness == 0) {
-            fitness = 1/(double)getDistance();
+            fitness = 1/getDistance();
         }
         return fitness;
     }

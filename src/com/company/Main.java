@@ -87,6 +87,7 @@ public class Main extends ApplicationFrame {
         City city6 = new City(238, 535);
         TourManager.addCity(city6);
         City city7 = new City(125, 358);
+
     /*    City city = new City(60, 200);
         TourManager.addCity(city);
         City city2 = new City(180, 200);
