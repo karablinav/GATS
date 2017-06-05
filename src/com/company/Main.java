@@ -73,7 +73,21 @@ public class Main extends ApplicationFrame {
 
     public static void main(String[] args) {
 
-        City city = new City(60, 200);
+
+        City city = new City(224, 179);
+        TourManager.addCity(city);
+        City city2 = new City(226, 7);
+        TourManager.addCity(city2);
+        City city3 = new City(319, 180);
+        TourManager.addCity(city3);
+        City city4 = new City(508, 265);
+        TourManager.addCity(city4);
+        City city5 = new City(320, 354);
+        TourManager.addCity(city5);
+        City city6 = new City(238, 535);
+        TourManager.addCity(city6);
+        City city7 = new City(125, 358);
+    /*    City city = new City(60, 200);
         TourManager.addCity(city);
         City city2 = new City(180, 200);
         TourManager.addCity(city2);
@@ -112,7 +126,7 @@ public class Main extends ApplicationFrame {
         City city19 = new City(60, 20);
         TourManager.addCity(city19);
         City city20 = new City(160, 20);
-        TourManager.addCity(city20);
+        TourManager.addCity(city20);*/
 
         final Main demo = new Main("Initial cities", TourManager.getCities());
         demo.pack();
