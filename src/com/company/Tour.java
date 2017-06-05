@@ -74,6 +74,10 @@ public class Tour {
         return tour.size();
     }
 
+    public List<City> getTour() {
+        return tour;
+    }
+
     public boolean containsCity(City city){
         return tour.contains(city);
     }

@@ -1,6 +1,75 @@
 package com.company;
 
-public class Main {
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.ui.ApplicationFrame;
+import org.jfree.ui.RefineryUtilities;
+
+import java.awt.*;
+import java.util.*;
+import java.util.List;
+
+public class Main extends ApplicationFrame {
+
+
+    public Main(String title,   List<City> cities) {
+        super(title);
+        final XYDataset dataset = createDataset(cities);
+        final JFreeChart chart = createChart(dataset);
+        final ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setPreferredSize(new java.awt.Dimension(700, 700));
+        setContentPane(chartPanel);
+    }
+
+    private JFreeChart createChart(final XYDataset dataset) {
+
+        final JFreeChart chart = ChartFactory.createXYLineChart(
+                "Genetic algorithm to the traveling salesman problem",      // chart title
+                "X",                      // x axis label
+                "Y",                      // y axis label
+                dataset,                  // data
+                PlotOrientation.VERTICAL,
+                true,                     // include legend
+                true,                     // tooltips
+                false                     // urls
+        );
+        chart.setBackgroundPaint(Color.white);
+
+        final XYPlot plot = chart.getXYPlot();
+        plot.setBackgroundPaint(Color.lightGray);
+
+        plot.setDomainGridlinePaint(Color.white);
+        plot.setRangeGridlinePaint(Color.white);
+
+        final XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+        renderer.setSeriesLinesVisible(0, true);
+        renderer.setSeriesShapesVisible(1, false);
+
+        plot.setRenderer(renderer);
+
+        return chart;
+
+    }
+
+
+    private XYDataset createDataset(  List<City> cities) {
+        final XYSeries series1 = new XYSeries("Cities", false);
+        for (int i = 0; i < cities.size(); i++) {
+            series1.add(cities.get(i).getX(),cities.get(i).getY() );
+        }
+        final XYSeriesCollection dataset = new XYSeriesCollection();
+        dataset.addSeries(series1);
+
+        return dataset;
+
+    }
 
     public static void main(String[] args) {
 
@@ -45,6 +114,11 @@ public class Main {
         City city20 = new City(160, 20);
         TourManager.addCity(city20);
 
+        final Main demo = new Main("Initial cities", TourManager.getCities());
+        demo.pack();
+        RefineryUtilities.centerFrameOnScreen(demo);
+        demo.setVisible(true);
+
         // Initialize population
         Population pop = new Population(50, true);
         System.out.println("Initial distance: " + pop.getFittest().getDistance());
@@ -60,6 +134,12 @@ public class Main {
         System.out.println("Final distance: " + pop.getFittest().getDistance());
         System.out.println("Solution:");
         System.out.println(pop.getFittest());
+
+
+        final Main demo2 = new Main("Route cities", pop.getFittest().getTour());
+        demo2.pack();
+        RefineryUtilities.centerFrameOnScreen(demo2);
+        demo2.setVisible(true);
     }
 }
 

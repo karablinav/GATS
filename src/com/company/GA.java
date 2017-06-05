@@ -13,7 +13,7 @@ public class GA {
         // Keep our best individual if elitism is enabled
         int elitismOffset = 0;
         if (elitism) {
-            newPopulation.saveTour(0, pop.getFittest());
+            newPopulation.saveTour(0, pop.getFittest()); // наиболее приспособленный
             elitismOffset = 1;
         }
 

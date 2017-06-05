@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TourManager {
-    private  static List<City> destinationCities = new ArrayList<>();
+    private static List<City> destinationCities = new ArrayList<>();
 
+    public static List<City> getCities(){
+        return destinationCities;
+    }
     public static void addCity(City city) {
         destinationCities.add(city);
     }
