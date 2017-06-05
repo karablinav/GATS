@@ -129,7 +129,6 @@ public class Main extends ApplicationFrame {
             pop = GA.evolvePopulation(pop);
         }
 
-        // Print final results
         System.out.println("Finished");
         System.out.println("Final distance: " + pop.getFittest().getDistance());
         System.out.println("Solution:");

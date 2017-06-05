@@ -11,7 +11,7 @@ public class Tour {
 
     // Cache
     private double fitness = 0;
-    private int distance = 0;
+    private double distance = 0;
 
     public Tour(List<City> tour) {
         this.tour = tour;
@@ -49,7 +49,7 @@ public class Tour {
         return fitness;
     }
 
-    public int getDistance(){
+    public double getDistance(){
         if (distance == 0) {
             int tourDistance = 0;
 
